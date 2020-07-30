@@ -17,11 +17,11 @@ app = Flask(__name__)
 def predict():
    # parse input features from request
    request_json = request.get_json()
-   x = request_json["input"]
-   x_in = np.array(x).reshape(1,-1)
+   data = request_json["input"]
+   data_rs = np.array(data).reshape(1,-1)
    # load model
    model = load_models()
-   prediction = model.predict(x_in)[0]
+   prediction = model.predict(data_rs)[0]
    response = json.dumps({'response': prediction})
    return response, 200
 
