@@ -7,7 +7,7 @@
 - Features: Engineered features from job description details including job title, seniority, location, company, industry, and tools used like excel and tableau.
 - Wrapped model in Flask API
 
-## Resources Used
+### Resources Used
 - Language: Python Version - 3.7
 - IDEs: Spyder and Jupyter Notebook
 - Packages: Flask, JSON, Matplotlib, Numpy, Pickle, Pandas, Seaborn, Selenium 
@@ -77,4 +77,4 @@ Ensemblling: Combining Lasso and the Random Forest model produced a slighly bett
   - Best Score = #11.10 at a 50% weight per component model | Predicted estimate is off by $11,100 on average.
 
 ### Data Model Deployment
-Built a Flask API virtual environment on my local client following the Ken Jee and the article above in the Resources Section. The API takes in a list of parameters for a job listing, runs it through the model, and returns a salary estimate.
+Built a Flask API virtual environment on my local client following the Ken Jee walkthrough and the article above in the Resources Section. The API takes in a list of parameters for a job listing, runs it through the model, and returns a salary estimate.
