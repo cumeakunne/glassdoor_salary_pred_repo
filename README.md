@@ -67,7 +67,7 @@ The evaluation method was chosen to be Mean Absolute Error for ease of interpret
 
 Three Models were built:
 1. Multiple Linear Regression : Served as Baseline Model
-  - Performance: score = 247630661127.73917
+  - Performance: score = 247630661127.73917 | excessively off due to sparsity data, with no meaningful interpretation
 2. Lasso Regression: A regularized regression was expected to perform better with such a small data set
   - Performance: #Score = 11.47 | Interprets as 'the predicted estimate off by $11,470 on average'
 3. Random Forest Regressor: This model aslo performs well with small data
@@ -77,3 +77,4 @@ Ensemblling: Combining Lasso and the Random Forest model produced a slighly bett
   - Best Score = #11.10 at a 50% weight per component model | Predicted estimate is off by $11,100 on average.
 
 ### Data Model Deployment
+Built a Flask API virtual environment on my local client following the Ken Jee and the article above in the Resources Section. The API takes in a list of parameters for a job listing, runs it through the model, and returns a salary estimate.
