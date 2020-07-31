@@ -57,4 +57,5 @@ Once the data was cleaned and some preliminary features were created, it was now
 - Then the categorical variables using bar plots
 - Once I had a better sense of the distribution of each feature, I used pivot tables to compare them with the outcome variable 'avg_salary'
 ![EDA Barplot!](https://github.com/cumeakunne/glassdoor_salary_pred_repo/blob/master/eda_barplot%20-%20Copy.jpg)
-
+![EDA Heatmap!](https://github.com/cumeakunne/glassdoor_salary_pred_repo/blob/master/eda_heatmap.jpg)
+![EDA_Pivot Table!](https://github.com/cumeakunne/glassdoor_salary_pred_repo/blob/master/eda_pivot.jpg)
