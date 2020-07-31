@@ -39,14 +39,22 @@ With each post we extracted the following features of data;
 The raw data scraped from Glassdoor needed to be cleaned for use in our analysis. In addition, some features were engineered to boost our models performance.
 The following lists the actions taken during this step;
 1. Remove NULLS: The records with null values from 'Salary Estimate'
-2. Salary parsing: The numeric estimates were parsed from the 'Salary Estimate' string
-- Added Feature: An average salary estimate was computed from the min and max salary estimates
+2. Salary parsing: The numeric estimates were parsed from the 'Salary Estimate' string. 
+  - Added Feature: An average salary estimate 'avg_salary'  was computed from the min and max salary estimates
+  - This 'avg_salary' feature became the outcome/target variable of interest for our analysis and modeling efforts
 3. Fixed spliced data: 'Company Name' included the 'Rating' value, removed
 4. Seperated Location contents into a State feature ('job_state') and city feature ('job_city')
 5. Same Location Dummy: Created a dummy variable capturing when the job was at the headquarters 
-- 'same_location' has 1 for at headquarters and 0 for not at headquarters
+  - 'same_location' has 1 for at headquarters and 0 for not at headquarters
 6. Company age: used 'Founded' year to compute the age of company from this year '2020'
 7. Parsed Job Description: Created dummy variables capturing the presence of analysis tools requested in 'Job Description'
-- These include 'python_yn', 'R_yn', tableau_yn', 'excel_yn', SAS_yn'. The _yn stands for whether the tool is present ( yes or no) which corresponds to values of 1 or 0 for each dummy variables
+  - These include 'python_yn', 'R_yn', tableau_yn', 'excel_yn', SAS_yn'. The _yn stands for whether the tool is present ( yes or no) which corresponds to values of 1 or 0 for    each dummy variables
+
+### Data Exploration
+Once the data was cleaned and some preliminary features were created, it was now time to explore the data.
+- I first used .describe() to see the basic descriptive stats for central tendency and the overall dispersion of each fature.
+- Each continuous variables was explored using histograms, box-plots, and a correlation matrix/heatmap
+- Then the categorical variables using bar plots
+- Once I had a better sense of the distribution of each feature, I used pivot tables to compare them with the outcome variable 'avg_salary'
 
 
