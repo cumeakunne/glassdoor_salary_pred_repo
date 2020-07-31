@@ -20,18 +20,33 @@ Deployment with Flask API: https://towardsdatascience.com/productionize-a-machin
 ### Data Collection
 Tweaked the github webscraper by arapfaik to scrape 500 job postings off glassdoor.com.
 With each post we extracted the following features of data;
-- Job Title
-- Salary Estimate
-- Job Description
-- Rating
-- Company Name
-- Location
-- Headquarters
-- Size
-- Founded
-- Type of ownership
-- Industry
-- Sector
-- Revenue
-- Competitors
+- Job Title  "The name of the job"
+- Salary Estimate "The estimated salary range the for the job"
+- Job Description "All the content within the section introducing the company and describing requeirement skills and duties the ideal prospective candidate should have."
+- Rating   "The companies rating as an employer"
+- Company Name "The name of the company"
+- Location "The city and state the company is located"
+- Headquarters "The city and state the HQ is located" 
+- Size "A range of the number of employees the company has"
+- Founded "The year the company was founded"
+- Type of ownership "Publically traded, privately owned, and other types of ownership
+- Industry "The industry the company belongs in"
+- Sector "The secotr the company belongs in"
+- Revenue "The range of annual revenue the company brings in"
+- Competitors "A list of competitors the copmany has"
+
+### Data Cleaning and Feature Engineering
+The raw data scraped from Glassdoor needed to be cleaned for use in our analysis. In addition, some features were engineered to boost our models performance.
+The following lists the actions taken during this step;
+1. Remove NULLS: The records with null values from 'Salary Estimate'
+2. Salary parsing: The numeric estimates were parsed from the 'Salary Estimate' string
+- Added Feature: An average salary estimate was computed from the min and max salary estimates
+3. Fixed spliced data: 'Company Name' included the 'Rating' value, removed
+4. Seperated Location contents into a State feature ('job_state') and city feature ('job_city')
+5. Same Location Dummy: Created a dummy variable capturing when the job was at the headquarters 
+- 'same_location' has 1 for at headquarters and 0 for not at headquarters
+6. Company age: used 'Founded' year to compute the age of company from this year '2020'
+7. Parsed Job Description: Created dummy variables capturing the presence of analysis tools requested in 'Job Description'
+- These include 'python_yn', 'R_yn', tableau_yn', 'excel_yn', SAS_yn'. The _yn stands for whether the tool is present ( yes or no) which corresponds to values of 1 or 0 for each dummy variables
+
 
