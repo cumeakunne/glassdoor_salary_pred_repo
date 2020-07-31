@@ -8,14 +8,14 @@
 - Wrapped model in Flask API
 
 ## Resources Used
-Language: Python Version - 3.7
-IDEs: Spyder and Jupyter Notebook
-Packages: Flask, JSON, Matplotlib, Numpy, Pickle, Pandas, Seaborn, Selenium 
-For Web Framework: pip install -r requirements.txt
-Project Inspiration and Walkthrough: https://github.com/PlayingNumbers/ds_salary_proj
-Webscraper Github: https://github.com/arapfaik/scraping-glassdoor-selenium
-Webscraper Blog: https://towardsdatascience.com/selenium-tutorial-scraping-glassdoor-com-in-10-minutes-3d0915c6d905
-Deployment with Flask API: https://towardsdatascience.com/productionize-a-machine-learning-model-with-flask-and-heroku-8201260503d2
+- Language: Python Version - 3.7
+- IDEs: Spyder and Jupyter Notebook
+- Packages: Flask, JSON, Matplotlib, Numpy, Pickle, Pandas, Seaborn, Selenium 
+- For Web Framework: pip install -r requirements.txt
+- Project Inspiration and Walkthrough: https://github.com/PlayingNumbers/ds_salary_proj
+- Webscraper Github: https://github.com/arapfaik/scraping-glassdoor-selenium
+- Webscraper Blog: https://towardsdatascience.com/selenium-tutorial-scraping-glassdoor-com-in-10-minutes-3d0915c6d905
+- Deployment with Flask API: https://towardsdatascience.com/productionize-a-machine-learning-model-with-flask-and-heroku-8201260503d2
 
 ### Data Collection
 Tweaked the github webscraper by arapfaik to scrape 500 job postings off glassdoor.com.
@@ -59,3 +59,21 @@ Once the data was cleaned and some preliminary features were created, it was now
 ![EDA Barplot!](https://github.com/cumeakunne/glassdoor_salary_pred_repo/blob/master/eda_barplot%20-%20Copy.jpg)
 ![EDA Heatmap!](https://github.com/cumeakunne/glassdoor_salary_pred_repo/blob/master/eda_heatmap.jpg)
 ![EDA_Pivot Table!](https://github.com/cumeakunne/glassdoor_salary_pred_repo/blob/master/eda_pivot.jpg)
+
+### Data Model Building
+From the exploration, I selected the features to include in the training models. Split the data set into a training set (80%) and test set (20%).
+Used pandas get_dummies() function to create dummy variables for all my categorical variables. This exponentially increased dimension size from 14 to 406.
+The evaluation method was chosen to be Mean Absolute Error for ease of interpretation, can tell how many $ our estimate is off directly from MAE.
+
+Three Models were built:
+1. Multiple Linear Regression : Served as Baseline Model
+  - Performance: score = 247630661127.73917
+2. Lasso Regression: A regularized regression was expected to perform better with such a small data set
+  - Performance: #Score = 11.47 | Interprets as 'the predicted estimate off by $11,470 on average'
+3. Random Forest Regressor: This model aslo performs well with small data
+  - Performance: #Score = 11.30 | Interprets as 'the predicted estimate off by $11,300 on average'
+
+Ensemblling: Combining Lasso and the Random Forest model produced a slighly better model. 
+  - Best Score = #11.10 at a 50% weight per component model | Predicted estimate is off by $11,100 on average.
+
+### Data Model Deployment
