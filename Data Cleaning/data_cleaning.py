@@ -7,7 +7,11 @@ Created on Mon Jul 20 01:46:30 2020
 
 import pandas as pd
 
-df = pd.read_csv('glassdoor_jobs.csv')
+df = pd.read_csv('salary_data_collected.csv')
+
+df.columns
+
+df = pd.read_csv('salary_data_cleaned.csv')
 
 df['Salary Estimate'].describe()
 
@@ -39,7 +43,7 @@ df['avg_salary'] = (df.max_salary+df.min_salary)/2
 
 #-company name text only
 
-df['company_txt'] = df.apply(lambda x: x['Company Name'] if x['Rating'] < 0 else x['Company Name'][:-3], axis = 1 )
+df['Company Name'] = df.apply(lambda x: x['Company Name'] if x['Rating'] < 0 else x['Company Name'][:-3], axis = 1 )
 
 #-state field and city field
 
