@@ -5,7 +5,7 @@ Created on Wed Jul 29 00:32:23 2020
 @author: cumea
 """
 
-
+#the list of inputs for first model run
 data_in = [0,
  1,
  17,
