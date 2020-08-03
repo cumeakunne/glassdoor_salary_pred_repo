@@ -5,18 +5,16 @@ Created on Mon Jul 20 01:46:30 2020
 @author: cumea
 """
 
+#import pandas
 import pandas as pd
 
+#import and check data
 df = pd.read_csv('salary_data_collected.csv')
-
 df.columns
-
-df = pd.read_csv('salary_data_cleaned.csv')
-
 df['Salary Estimate'].describe()
 
 
-## List Cleaning Objectives by Block
+""" List Cleaning Objectives by Block """
 
 #-remove records with null values for salary field
 #-salary parsing
@@ -26,14 +24,12 @@ df['Salary Estimate'].describe()
 #-age of company
 #-parsing of job description (pythin, etc.)
 
-## Cleaning Objectives by Block
+""" Cleaning Objectives by Block """
 
 #-remove records with null values for salary field
-
-df_present_salaries_only = df[df['Salary Estimate'] != -1] #Uneeded
+df_present_salaries_only = df[df['Salary Estimate'] != -1] #Uneeded with this scrape batch
 
 #-salary parsing
-
 salary = df['Salary Estimate'].apply(lambda x: x.split('(')[0])
 minus_kD = salary.apply(lambda x: x.replace('K','').replace('$','')) 
 df['min_salary'] = minus_kD.apply(lambda x: int(x.split('-')[0]))
@@ -42,25 +38,20 @@ df['avg_salary'] = (df.max_salary+df.min_salary)/2
 
 
 #-company name text only
-
 df['Company Name'] = df.apply(lambda x: x['Company Name'] if x['Rating'] < 0 else x['Company Name'][:-3], axis = 1 )
 
 #-state field and city field
-
 df['job_city'] = df['Location'].apply(lambda x: x.split(', ')[0])
 df['job_state'] = df['Location'].apply(lambda x: x[-2:])
 
-# Job located at Headquarters
-
+#-job located at headquarters
 df['same_location'] = df.apply(lambda x: 1 if x.Location == x.Headquarters else 0, axis = 1)
 
 #-age of company
-
 df['age_company'] = df['Founded'].apply(lambda x: x if x<0 else 2020-x)
  
 
 #-parsing of job description (python, etc.)
-
 #python
 df['python_yn'] = df['Job Description'].apply(lambda x: 1  if 'python' in x.lower() else 0 )
 df.python_yn.value_counts()
